@@ -19,7 +19,7 @@ public class TestMyBatis {
 	@Resource
 	private ArticleService articleService = null;  
 	@Test
-	public void testCRUD(){
+	public void testCRUD() {
 		Article art= articleService.getArticleById( 3);
 		System.out.println("2222");
 		System.out.println(art);

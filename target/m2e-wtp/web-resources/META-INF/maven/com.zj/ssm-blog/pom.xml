@@ -112,12 +112,30 @@
             <version>1.2.2</version>  
         </dependency>  
         
-        <!-- JSTL标签类 -->  
-        <dependency>  
-            <groupId>jstl</groupId>  
-            <artifactId>jstl</artifactId>  
-            <version>1.2</version>  
-        </dependency>  
+            <!-- 添加jsp支持 -->
+		    <dependency>
+		      <groupId>javax.servlet.jsp</groupId>
+		      <artifactId>javax.servlet.jsp-api</artifactId>
+		      <version>2.3.1</version>
+		    </dependency>
+		    <!-- 添加jstl支持 -->
+		    <dependency>
+		      <groupId>javax.servlet</groupId>
+		      <artifactId>jstl</artifactId>
+		      <version>1.1.2</version>
+		    </dependency>
+		    <dependency>
+		      <groupId>taglibs</groupId>
+		      <artifactId>standard</artifactId>
+		      <version>1.1.2</version>
+		    </dependency>
+	    
+	      <dependency>
+		      <groupId>com.googlecode.rapid-framework</groupId>
+		      <artifactId>rapid-core</artifactId>
+		      <version>4.0.5</version>
+		    </dependency>
+		    
         <!-- 日志文件管理包 -->  
         <!-- log start -->  
         <dependency>  
