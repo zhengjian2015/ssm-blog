@@ -16,9 +16,7 @@
     <context:component-scan base-package="com.zj.curd.service.impl"></context:component-scan> -->
     <!-- 扩充了注解驱动，可以将请求参数绑定到控制器参数 -->
     <mvc:annotation-driven/>
-    <!-- 静态资源处理  css js imgs -->
-
-   <mvc:resources location="/resource/**" mapping="/resource"/>
+    
     	
     <!--避免IE执行AJAX时，返回JSON出现下载文件 -->  
     <bean id="mappingJacksonHttpMessageConverter"  
@@ -76,4 +74,11 @@
         <property name="prefix" value="/WEB-INF/view/" />  
         <property name="suffix" value=".jsp" />  
     </bean>  
+    <mvc:resources mapping="/javascript/**"  
+        location="/static_resources/javascript/"/>   
+        <mvc:resources mapping="/styles/**"  
+        location="/static_resources/css/"/>   
+        <mvc:resources mapping="/images/**"  
+        location="/static_resources/images/"/>   
+        <mvc:default-servlet-handler />   
 </beans>

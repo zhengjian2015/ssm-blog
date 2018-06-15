@@ -10,10 +10,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/superfish.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/script.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugin/layui/layui.all.js"></script>
+<script src="${pageContext.request.contextPath}/resource/assets/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resource/assets/js/superfish.js"></script>
+<script src="${pageContext.request.contextPath}/resource/assets/js/script.js"></script>
+<script src="${pageContext.request.contextPath}/resource/assets/plugin/layui/layui.all.js"></script>
 </head>
 <body>
 <div id="page" class="site" style="transform: none;">
