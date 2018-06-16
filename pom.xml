@@ -198,6 +198,13 @@
             <artifactId>pagehelper</artifactId>
             <version>4.1.6</version>
         </dependency>
+        
+        <!-- 添加阿里巴巴连接池Druid支持 -->
+		    <dependency>
+		      <groupId>com.alibaba</groupId>
+		      <artifactId>druid</artifactId>
+		      <version>1.0.16</version>
+		    </dependency>
     </dependencies>
     
     <build>

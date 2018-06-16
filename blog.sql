@@ -210,7 +210,7 @@ INSERT INTO `page` VALUES ('1', 'map', '站点地图', null, null, null, '0', '0
 COMMIT;
 
 -- ----------------------------
---  Table structure for `tag`
+--  Table structure for `tag`  文章标签
 -- ----------------------------
 DROP TABLE IF EXISTS `tag`;
 CREATE TABLE `tag` (

@@ -25,6 +25,7 @@
     article_tag_ids, article_view_count, article_comment_count, article_like_count, article_post_time, 
     article_update_time, article_is_comment, article_status, article_order
   </sql>
+
   <sql id="Blob_Column_List" >
     article_content
   </sql>
