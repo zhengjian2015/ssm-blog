@@ -1,6 +1,5 @@
 package com.zj.blog.pojo;
 
-
 import java.util.Date;
 
 public class User {

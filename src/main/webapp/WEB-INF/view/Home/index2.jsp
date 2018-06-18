@@ -24,7 +24,7 @@
     <rapid:override name="left">
         <div id="primary" class="content-area">
             <main id="main" class="site-main" role="main">
-                <c:forEach items="${articleListVoList}" var="a">
+                <c:forEach items="${pageInfo.list}" var="a">
                     <article  class="post type-post">
                         <figure class="thumbnail">
                             <a href="/article/${a.articleCustom.articleId}">
@@ -43,7 +43,7 @@
 
                         <header class="entry-header">
                             <h2 class="entry-title">
-                                <a href="${pageContext.request.contextPath}/article/${a.articleCustom.articleId}"
+                                <a href="/article/${a.articleCustom.articleId}"
                                    rel="bookmark">
                                         ${a.articleCustom.articleTitle}
                                 </a>
@@ -98,7 +98,7 @@
                         </div><!-- .entry-content -->
 
                         <span class="entry-more">
-                                <a href="${pageContext.request.contextPath}/article/${a.articleCustom.articleId}"
+                                <a href="/article/${a.articleCustom.articleId}"
                                    rel="bookmark">
                                     阅读全文
                                 </a>
@@ -107,83 +107,42 @@
                 </c:forEach>
             </main>
             
-            <c:if test="${articleListVoList[0].page.totalPageCount>1}">
-            <nav class="navigation pagination" role="navigation">
-                <div class="nav-links">
-                    <c:choose>
-                        <c:when test="${articleListVoList[0].page.totalPageCount <= 3 }">
-                            <c:set var="begin" value="1"/>
-                            <c:set var="end" value="${articleListVoList[0].page.totalPageCount }"/>
-                        </c:when>
-                        <c:otherwise>
-                            <c:set var="begin" value="${articleListVoList[0].page.pageNow-1 }"/>
-                            <c:set var="end" value="${articleListVoList[0].page.pageNow + 2}"/>
-                            <c:if test="${begin < 2 }">
-                                <c:set var="begin" value="1"/>
-                                <c:set var="end" value="3"/>
-                            </c:if>
-                            <c:if test="${end > articleListVoList[0].page.totalPageCount }">
-                                <c:set var="begin" value="${articleListVoList[0].page.totalPageCount-2 }"/>
-                                <c:set var="end" value="${articleListVoList[0].page.totalPageCount }"/>
-                            </c:if>
-                        </c:otherwise>
-                    </c:choose>
-                        <%--上一页 --%>
-                    <c:choose>
-                        <c:when test="${articleListVoList[0].page.pageNow eq 1 }">
-                            <%--当前页为第一页，隐藏上一页按钮--%>
-                        </c:when>
-                        <c:otherwise>
-                            <a class="page-numbers" href="${pageContext.request.contextPath}/p/${articleListVoList[0].page.pageNow-1}" >
-                                <span class="fa fa-angle-left"></span>
-                            </a>
-                        </c:otherwise>
-                    </c:choose>
-                        <%--显示第一页的页码--%>
-                    <c:if test="${begin >= 2 }">
-                        <a class="page-numbers" href="/p/1">1</a>
+            !-- 显示分页信息 -->
+        <div class="row">
+            <!--分页文字信息  -->
+            <div class="col-md-6 pageMessage" id="page_info_area">当前 ${pageInfo.pageNum }页,总${pageInfo.pages }
+                页,总 ${pageInfo.total } 条记录</div>
+            <!-- 分页条信息 -->
+            <div class="col-md-6" id="page_nav_area">
+                <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li><a href="${pageContext.request.contextPath}/p?pn=1">首页</a></li>
+                    <c:if test="${pageInfo.hasPreviousPage }">
+                        <li><a href="${pageContext.request.contextPath}/p?pn=${pageInfo.pageNum-1}"
+                            aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+                        </a></li>
                     </c:if>
-                        <%--显示点点点--%>
-                    <c:if test="${begin  > 2 }">
-                        <span class="page-numbers dots">…</span>
-                    </c:if>
-                        <%--打印 页码--%>
-                    <c:forEach begin="${begin }" end="${end }" var="i">
-                        <c:choose>
-                            <c:when test="${i eq articleListVoList[0].page.pageNow }">
-                                <a class="page-numbers current" >${i}</a>
-                            </c:when>
-                            <c:otherwise>
-                                <a  class="page-numbers" href="${pageContext.request.contextPath}/p/${i}">${i }</a>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:forEach>
-                        <%-- 显示点点点 --%>
-                    <c:if test="${end < articleListVoList[0].page.totalPageCount-1 }">
-                        <span class="page-numbers dots">…</span>
-                    </c:if>
-                        <%-- 显示最后一页的数字 --%>
-                    <c:if test="${end < articleListVoList[0].page.totalPageCount }">
-                        <a href="${pageContext.request.contextPath}/p/${articleListVoList[0].page.totalPageCount}">
-                                ${articleListVoList[0].page.totalPageCount}
-                        </a>
-                    </c:if>
-                        <%--下一页 --%>
-                    <c:choose>
-                        <c:when test="${articleListVoList[0].page.pageNow eq articleListVoList[0].page.totalPageCount }">
-                            <%--到了尾页隐藏，下一页按钮--%>
-                        </c:when>
-                        <c:otherwise>
-                            <a class="page-numbers" href="${pageContext.request.contextPath}/p/${articleListVoList[0].page.pageNow+1}">
-                                <span class="fa fa-angle-right"></span>
-                            </a>
-                        </c:otherwise>
-                    </c:choose>
 
-                </div>
-            </nav>
-                <%--分页 end--%>
-            </c:if>
+
+                    <c:forEach items="${pageInfo.navigatepageNums }" var="page_Num">
+                        <c:if test="${page_Num == pageInfo.pageNum }">
+                            <li class="active"><a href="#">${page_Num }</a></li>
+                        </c:if>
+                        <c:if test="${page_Num != pageInfo.pageNum }">
+                            <li><a href="${pageContext.request.contextPath}/p?pn=${page_Num }">${page_Num }</a></li>
+                        </c:if>
+
+                    </c:forEach>
+                    <c:if test="${pageInfo.hasNextPage }">
+                        <li><a href="${pageContext.request.contextPath}/p?pn=${pageInfo.pageNum+1 }"
+                            aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+                        </a></li>
+                    </c:if>
+                    <li><a href="${pageContext.request.contextPath}/p?pn=${pageInfo.pages}">末页</a></li>
+                </ul>
+                </nav>
+            </div>
+        </div>
             
         </div>   
 

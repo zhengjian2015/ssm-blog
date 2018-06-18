@@ -28,4 +28,6 @@ public class PageController {
         modelAndView.addObject("articleList",articleList);
         return modelAndView;
     }
+    
+    
 }
