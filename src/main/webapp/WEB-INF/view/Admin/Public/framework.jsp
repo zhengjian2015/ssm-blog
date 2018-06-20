@@ -33,7 +33,7 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">新建</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="/admin/article/insert">文章</a></dd>
+                    <dd><a href="${pageContext.request.contextPath}/admin/article/insert">文章</a></dd>
                     <dd><a href="/admin/page/insert">页面</a></dd>
                     <dd><a href="/admin/category/insert">分类</a></dd>
                     <dd><a href="/admin/tag/insert">标签</a></dd>

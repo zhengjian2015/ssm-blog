@@ -9,6 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import com.zj.blog.pojo.custom.ArticleListVo;
+import com.zj.blog.pojo.custom.CategoryCustom;
+import com.zj.blog.pojo.custom.TagCustom;
 import com.zj.blog.service.ArticleService;
 import com.zj.blog.service.CategoryService;
 import com.zj.blog.service.TagService;
@@ -20,11 +22,10 @@ import com.zj.blog.service.TagService;
 public class BackArticleController {
 	@Autowired
     private ArticleService articleService;
-
-
-    /*@Autowired
+	
+	@Autowired
     private TagService tagService;
-*/
+
     @Autowired
     private CategoryService categoryService;
 
@@ -42,6 +43,23 @@ public class BackArticleController {
         List<ArticleListVo> draftArticleList = articleService.listArticle(0);
         modelAndView.addObject("draftArticleList",draftArticleList);
         modelAndView.setViewName("Admin/Article/index");
+        return modelAndView;
+    }
+    
+    
+    
+    //后台添加文章页面显示
+    @RequestMapping(value = "/insert")
+    public ModelAndView insertArticleView() throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+
+        List<CategoryCustom> categoryCustomList = categoryService.listCategory(1);
+        List<TagCustom> tagCustomList = tagService.listTag(1);
+
+        modelAndView.addObject("categoryCustomList",categoryCustomList);
+        modelAndView.addObject("tagCustomList",tagCustomList);
+
+        modelAndView.setViewName("Admin/Article/insert");
         return modelAndView;
     }
 }
