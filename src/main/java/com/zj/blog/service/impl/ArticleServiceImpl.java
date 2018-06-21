@@ -297,4 +297,11 @@ public class ArticleServiceImpl implements ArticleService{
 		ArticleCustom articleCustom = articleMapperCustom.getPreArticle(status,id);
 		return articleCustom;
 	}
+
+
+	@Override
+	public void insertArticle(Article article) throws Exception {
+		// TODO Auto-generated method stub
+		articleMapper.insertSelective(article);
+	}
 }

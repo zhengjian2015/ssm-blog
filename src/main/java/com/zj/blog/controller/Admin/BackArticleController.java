@@ -1,13 +1,15 @@
 package com.zj.blog.controller.Admin;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.zj.blog.pojo.Article;
 import com.zj.blog.pojo.custom.ArticleListVo;
 import com.zj.blog.pojo.custom.CategoryCustom;
 import com.zj.blog.pojo.custom.TagCustom;
@@ -46,7 +48,23 @@ public class BackArticleController {
         return modelAndView;
     }
     
-    
+    //后台添加文章提交操作
+    @RequestMapping(value = "/insertSubmit",method = RequestMethod.POST)
+    public String insertArticleSubmit(Article article) throws Exception {
+
+        article.setArticlePostTime(new Date());
+        article.setArticleUpdateTime(new Date());
+        article.setArticleIsComment(1);
+        article.setArticleViewCount(0);
+        article.setArticleLikeCount(0);
+        article.setArticleCommentCount(0);
+        article.setArticleStatus(1);
+        article.setArticleOrder(1);
+
+        articleService.insertArticle(article);
+
+        return "redirect:/admin/article";
+    }
     
     //后台添加文章页面显示
     @RequestMapping(value = "/insert")

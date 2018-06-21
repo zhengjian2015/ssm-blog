@@ -33,10 +33,6 @@ public class Article {
 
     private String articleContent;
 
-	public Article() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	public Integer getArticleId() {
 		return articleId;
@@ -156,6 +152,17 @@ public class Article {
 
 	public void setArticleContent(String articleContent) {
 		this.articleContent = articleContent;
+	}
+
+	@Override
+	public String toString() {
+		return "Article [articleId=" + articleId + ", articleUserId=" + articleUserId + ", articleTitle=" + articleTitle
+				+ ", articleParentCategoryId=" + articleParentCategoryId + ", articleChildCategoryId="
+				+ articleChildCategoryId + ", articleTagIds=" + articleTagIds + ", articleViewCount=" + articleViewCount
+				+ ", articleCommentCount=" + articleCommentCount + ", articleLikeCount=" + articleLikeCount
+				+ ", articlePostTime=" + articlePostTime + ", articleUpdateTime=" + articleUpdateTime
+				+ ", articleIsComment=" + articleIsComment + ", articleStatus=" + articleStatus + ", articleOrder="
+				+ articleOrder + ", articleContent=" + articleContent + "]";
 	}
     
     

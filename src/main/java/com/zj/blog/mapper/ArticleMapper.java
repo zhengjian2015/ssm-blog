@@ -11,5 +11,6 @@ import com.zj.blog.pojo.Article;
 public interface ArticleMapper {
 	Article selectByPrimaryKey(Integer articleId);
 	
+	int insertSelective(Article record);
 	//List<Article> getArticles(@Param(value="status")Integer status);
 }

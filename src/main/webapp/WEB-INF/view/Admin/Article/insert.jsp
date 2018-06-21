@@ -21,7 +21,7 @@
 
 
 
-    <form class="layui-form"  method="post" id="myForm" action="/admin/article/insertSubmit">
+    <form class="layui-form"  method="post" id="myForm" action="${pageContext.request.contextPath}/admin/article/insertSubmit">
 
         <div class="layui-form-item">
             <label class="layui-form-label">标题 <span style="color: #FF5722; ">*</span></label>
@@ -41,7 +41,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">分类 <span style="color: #FF5722; ">*</span> </label>
             <div class="layui-input-inline">
-                <select name="articleParentCategoryId" id="articleParentCategoryId" lay-filter="articleParentCategoryId" required>
+                <select name="articleParentCategoryId" id="articleParentCategoryId" lay-filter="articleParentCategoryId">
                     <option value="" selected="">一级分类</option>
                     <c:forEach items="${categoryCustomList}" var="c">
                         <c:if test="${c.categoryPid==0}">
@@ -162,7 +162,7 @@
                 }
                 </c:forEach>
                 $("#articleChildCategoryId").html("<option value=''selected>二级分类</option>"+optionstring);
-                form.render('select'); //这个很重要
+                form.render('sselect'); //这个很重要
             })
 
 //end

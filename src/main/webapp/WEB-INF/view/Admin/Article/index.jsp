@@ -79,7 +79,7 @@
                                     <td><input type="checkbox" name="ids" value="${a.articleCustom.articleId}"></td>
                                     <td>${a.articleCustom.articleId}</td>
                                     <td>
-                                        <a href="/article/${a.articleCustom.articleId}"
+                                        <a href="${pageContext.request.contextPath}/article/${a.articleCustom.articleId}"
                                            target="_blank">
                                                ${a.articleCustom.articleTitle}
 
@@ -105,7 +105,7 @@
                                                         pattern="MM月dd日 HH:mm"/>
                                     </td>
                                     <td>
-                                        <a href="/admin/article/edit/${a.articleCustom.articleId}"
+                                        <a href="${pageContext.request.contextPath}/admin/article/edit/${a.articleCustom.articleId}"
                                            class="layui-btn layui-btn-mini">编辑</a>
                                         <a href="javascript:void(0)"
                                            onclick="deleteArticle(${a.articleCustom.articleId})"

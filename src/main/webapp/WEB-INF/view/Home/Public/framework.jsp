@@ -36,7 +36,7 @@
     </rapid:block>
     <script src="${pageContext.request.contextPath}/resource/assets/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/resource/assets/js/superfish.js"></script>
-    <script src="/js/script.js"></script>
+    <script src="${pageContext.request.contextPath}/resource/assets//js/script.js"></script>
     <script src="${pageContext.request.contextPath}/resource/assets/plugin/layui/layui.all.js"></script>
     <script>
 

@@ -38,5 +38,8 @@ public interface ArticleService {
 	
 	//获得上一篇文章
 	public ArticleCustom getPreArticle(Integer status,Integer id) throws Exception;
+	
+	//添加文章
+	public void insertArticle(Article article) throws Exception;
 
 }

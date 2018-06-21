@@ -18,7 +18,7 @@
 
 <rapid:override name="header-style">
     <rapid:override name="header-style">
-        <link rel="stylesheet" href="/css/highlight.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/assets/css/highlight.css">
         <style>
             .entry-title {
                 background: #f8f8f8;
@@ -483,7 +483,7 @@
 
 
 <rapid:override name="footer-script">
-    <script src="/js/jquery.cookie.js"></script>
+    <script src="${pageContext.request.contextPath}/resource/assets/js/jquery.cookie.js"></script>
 
     <script type="text/javascript">
         increaseViewCount();
