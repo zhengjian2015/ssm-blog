@@ -77,6 +77,7 @@
                         <dd><a href="/admin/page">全部页面</a></dd>
                         <dd><a href="/admin/page/insert">添加页面</a></dd>
                     </dl>
+                    <input id="PageContext" type="hidden" value="${pageContext.request.contextPath}" />
                 </li>
                 <li class="layui-nav-item">
                     <a class="" href="javascript:;">

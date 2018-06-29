@@ -2,7 +2,9 @@ package com.zj.blog.pojo.custom;
 
 import java.util.List;
 
-import com.zj.blog.util.Page;
+import com.zj.blog.util.others.Page;
+
+
 
 /**
  * 用于封装文章列表，包括文章信息，作者信息，分类信息，标签信息

@@ -5,11 +5,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.zj.blog.pojo.Article;
+import com.zj.blog.pojo.custom.ArticleCustom;
 import com.zj.blog.pojo.custom.ArticleListVo;
 import com.zj.blog.pojo.custom.CategoryCustom;
 import com.zj.blog.pojo.custom.TagCustom;
@@ -80,4 +82,39 @@ public class BackArticleController {
         modelAndView.setViewName("Admin/Article/insert");
         return modelAndView;
     }
+    
+    
+    //编辑文章页面显示
+    @RequestMapping(value="/edit/{id}")
+    public ModelAndView editArticleView(@PathVariable("id") Integer id) throws Exception {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		ArticleCustom articleCustom =  articleService.getArticleById(null,id);
+        modelAndView.addObject("articleCustom",articleCustom);
+
+        List<CategoryCustom> categoryCustomList = categoryService.listCategory(1);
+        modelAndView.addObject("categoryCustomList",categoryCustomList);
+
+        List<TagCustom> tagCustomList = tagService.listTag(1);
+        modelAndView.addObject("tagCustomList",tagCustomList);
+		
+        modelAndView.setViewName("Admin/Article/edit");
+    	return modelAndView;
+    	
+    }
+    
+  //编辑文章提交
+    @RequestMapping(value = "/editSubmit",method = RequestMethod.POST)
+    public String editArticleSubmit(ArticleCustom articleCustom) throws Exception {
+        Integer id = articleCustom.getArticleId();
+        articleCustom.setArticleUpdateTime(new Date());
+        articleService.updateArticle(id,articleCustom);
+        return "redirect:/admin/article";
+    }
+    
+    @RequestMapping(value="/delete/{id}",method = RequestMethod.POST)
+    public void deleteArticle(@PathVariable("id") Integer id) throws Exception {
+    	articleService.deleteArticle(id);
+    }
+    
 }

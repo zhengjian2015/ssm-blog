@@ -20,6 +20,12 @@ public interface ArticleService {
 	//根据id获得文章
 	public ArticleCustom getArticleById(Integer status,Integer id) throws Exception;
 	
+	//修改文章信息
+	public void updateArticle(Integer id, Article article) throws Exception;
+	
+	//删除文章
+	public void deleteArticle(Integer id) throws Exception;
+	
 	//分页显示()
 	public List<ArticleListVo> listArticleByPage(Integer status,Integer pageNow,Integer pageSize) throws Exception;
 	

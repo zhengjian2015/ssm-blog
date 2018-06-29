@@ -111,7 +111,13 @@
             <artifactId>commons-dbcp</artifactId>  
             <version>1.2.2</version>  
         </dependency>  
-        
+        	 <!-- 添加sevlet支持 -->
+		    <dependency>
+		      <groupId>javax.servlet</groupId>
+		      <artifactId>javax.servlet-api</artifactId>
+		      <version>3.1.0</version>
+		      <scope>provided</scope>
+    		</dependency>
             <!-- 添加jsp支持 -->
 		    <dependency>
 		      <groupId>javax.servlet.jsp</groupId>

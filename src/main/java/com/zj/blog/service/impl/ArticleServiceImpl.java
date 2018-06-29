@@ -27,7 +27,7 @@ import com.zj.blog.pojo.custom.TagCustom;
 import com.zj.blog.pojo.custom.UserCustom;
 import com.zj.blog.service.ArticleService;
 import com.zj.blog.util.Functions;
-import com.zj.blog.util.Page;
+import com.zj.blog.util.others.Page;
 
 
 @Service
@@ -303,5 +303,21 @@ public class ArticleServiceImpl implements ArticleService{
 	public void insertArticle(Article article) throws Exception {
 		// TODO Auto-generated method stub
 		articleMapper.insertSelective(article);
+	}
+
+
+	@Override
+	public void updateArticle(Integer id, Article article) throws Exception {
+		//添加业务校验，通常在service接口对关键
+		article.setArticleId(id);
+		articleMapper.updateByPrimaryKeySelective(article);
+		
+	}
+
+
+	@Override
+	public void deleteArticle(Integer id) throws Exception {
+		// TODO Auto-generated method stub
+		articleMapper.deleteByPrimaryKey(id);
 	}
 }

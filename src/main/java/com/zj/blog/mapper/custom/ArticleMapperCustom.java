@@ -41,5 +41,8 @@ public interface ArticleMapperCustom {
 	public ArticleCustom getPreArticle(@Param(value="status") Integer status,@Param(value="id") Integer id) throws Exception;
 	
 	//获得该分类的文章数
+	public Integer countArticleByCategory(@Param(value="status") Integer status,@Param(value = "id") Integer id) throws Exception;
+	
+	//获得该分类的文章数
 	public Integer countArticleByTag(@Param(value="status") Integer status,@Param(value = "id") Integer id) throws Exception;
 }

@@ -26,6 +26,31 @@
             category.category_id=#{id}
         </where>
     </select>
+    
+    
+    <select id="listCategory" resultType="com.zj.blog.pojo.custom.CategoryCustom">
+        SELECT
+        <include refid="category_table_all_column"/>
+        FROM category
+        <where>
+                <if test="status!=null">
+                    category_status=#{status}
+                </if>
+        </where>
+        order by category_status ASC, category_order desc,category_id asc
+    </select>
 
-
+	<!--获得含有该分类的文章列表-->
+    <select id="listArticleWithCategoryByPage" resultType="com.zj.blog.pojo.custom.ArticleCustom">
+        SELECT * FROM `article`
+        <where>
+            <if test="status!=null">
+                article_status=#{status} AND
+            </if>
+             article_parent_category_id=#{cateId} OR
+             article_child_category_id=#{cateId}
+        </where>
+        ORDER BY article_id DESC
+        limit #{startPos},#{pageSize}
+    </select>
 </mapper>

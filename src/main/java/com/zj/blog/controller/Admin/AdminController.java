@@ -106,7 +106,6 @@ public class AdminController {
 
         }
         String result = new JSONObject(map).toString();
-        System.out.println("999999999999999999999");
         System.out.println(result);
         return result;
     }

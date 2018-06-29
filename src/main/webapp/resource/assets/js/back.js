@@ -102,11 +102,12 @@ function insertDraft() {
 
 //删除文章
 function deleteArticle(id) {
+	var pageContext = $("#PageContext").val();
     if(confirmDelete()==true){
         $.ajax({
             async: false,
             type: "POST",
-            url:'/admin/article/delete/'+id,
+            url:pageContext+'/admin/article/delete/'+id,
             contentType : "application/x-www-form-urlencoded; charset=utf-8",
             dataType: "text",
             complete:function () {
