@@ -94,7 +94,7 @@
 
                                     <td>
                                         <c:forEach items="${a.tagCustomList}" var="t">
-                                            <a href="/tag/${t.tagId}"
+                                            <a href="${pageContext.request.contextPath}/tag/${t.tagId}"
                                                target="_blank">${t.tagName}</a>
                                             &nbsp;
                                         </c:forEach>
